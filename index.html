@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ラジオ体操ヒーローズ｜展示・ランキング</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><a class="brand" href="#display"><span>RH</span><div>ラジオ体操ヒーローズ<small>街に元気を。きみの動きが、ヒーローの力。</small></div></a><nav><a href="#display">展示画面</a><a href="#staff">スタッフ管理</a><button id="fullscreen">全画面表示</button></nav></header>
+<main id="display">
+ <div class="heading"><div><p class="eyebrow">MOVE YOUR BODY. SAVE THE CITY.</p><h1>次のヒーローは、きみだ。</h1></div><span class="pill">体を動かしてチャレンジ！</span></div>
+ <div class="exhibit-grid"><section class="movie"><div id="placeholder"><span class="radio">☀</span><p class="eyebrow">RADIO CALISTHENICS HEROES</p><h2>ジャンプ！ よけて！<br>ねじって、跳ね返そう。</h2><p>お手本をまねして、街に朝を取り戻そう。</p><small>スタッフ画面から紹介動画を選択してください</small></div><video id="video" controls autoplay muted loop playsinline hidden></video><div class="movie-caption"><span>ゲーム紹介</span><span>映像はくり返し再生されます</span></div></section>
+ <section class="leaderboard"><p class="eyebrow">TODAY’S HEROES</p><h2>本日の TOP 10 <span>★</span></h2><p id="today" class="muted"></p><ol id="top10"></ol><p id="empty" class="empty">今日の最初のヒーローを<br>お待ちしています！</p><small>同点は同じ順位です。登録されたスコアを表示します。</small></section></div>
+ <footer class="display-footer"><strong>01 ジャンプで攻撃</strong><strong>02 体を曲げて回避</strong><strong>03 ねじって反射</strong><a href="https://radio-calisthenics-heroes.vercel.app/" target="_blank" rel="noopener">ゲームを開く ↗</a></footer>
+</main>
+<main id="staff" hidden><p class="eyebrow">STAFF DESK</p><h1>展示・スコア管理</h1><p class="notice">この試作版は認証なし・このブラウザ内だけに保存します。別PCとの共有はできません。ブラウザのデータ削除に備え、終了時にCSVを保存してください。</p>
+<div class="admin-grid"><section class="card"><h2>紹介動画</h2><label>動画ファイル（MP4推奨）<input id="movie-file" type="file" accept="video/*"></label><p id="movie-name" class="muted">動画未選択</p><label class="check"><input id="sound" type="checkbox">動画の音声を出す</label><p class="muted">動画はアップロードされません。再読み込み時は選び直してください。別タブにも動画は引き継がれません。</p><a href="#display" class="button">展示画面へ</a></section>
+<section class="card"><h2 id="form-title">スコアを登録</h2><form id="score-form"><label>ニックネーム（20文字まで）<input id="nickname" maxlength="20" required autocomplete="off" placeholder="例：ラジ"></label><div class="fields"><label>スコア<input id="score" type="number" min="0" max="999999" step="1" required></label><label>プレイ日<input id="played-date" type="date" required></label></div><label class="check"><input id="consent" type="checkbox" required>本人にニックネームとスコアの公開を確認しました</label><p class="muted">研究データ利用への同意とは別に確認してください。本名は入力しないでください。</p><div class="actions"><button type="submit" class="primary" id="save">登録する</button><button type="button" id="cancel" hidden>編集をやめる</button></div></form></section></div>
+<section class="card records"><div class="table-heading"><h2>登録データ</h2><div class="actions"><label>表示日<input id="filter-date" type="date"></label><button id="all">全日程</button><button id="export">表示中のデータをCSV出力</button></div></div><p class="muted">同じ人の重複登録は自動統合しません。同じ条件（モード・時間・ゲーム版）で遊んだ結果を登録してください。</p><div class="table-wrap"><table><thead><tr><th>日付</th><th>ニックネーム</th><th>スコア</th><th>操作</th></tr></thead><tbody id="records"></tbody></table></div></section></main>
+<div id="message" role="status" aria-live="polite"></div><script src="app.js"></script></body></html>
